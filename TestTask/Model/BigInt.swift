@@ -13,10 +13,10 @@ struct BigInt: Hashable {
     static func sum(left: String, right: String) -> String {
         let leftCharacterArray = left.map { Int(String($0))! }
         let rightCharacterArray = right.map { Int(String($0))! }
-        var l: [Int] = []   // переменная для хранения числа с большим разрядом
-        var s: [Int] = []   // переменная для хранения числа с меньшим разрядом
+        var l: [Int] = []   // переменная для хранения числа с большим кол-вом разрядов
+        var s: [Int] = []   // переменная для хранения числа с меньшим кол-вом разрядов
         
-        // определяем какое число имеет больший разряд
+        // определяем какое число имеет большее кол-во разрядов
         if leftCharacterArray.count > rightCharacterArray.count {
             l = leftCharacterArray
             s = rightCharacterArray
