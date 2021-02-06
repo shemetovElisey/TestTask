@@ -32,6 +32,7 @@
 		3CB7ECBB25CDF5E70062654C /* BigInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigInt.swift; sourceTree = "<group>"; };
 		3CB7ECBE25CF114C0062654C /* PrimeNumbersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeNumbersViewModel.swift; sourceTree = "<group>"; };
 		3CB7ECC125CF39630062654C /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		3CB7ECCB25CF423F0062654C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,7 @@
 		3CB7EC9425CDCB460062654C = {
 			isa = PBXGroup;
 			children = (
+				3CB7ECCB25CF423F0062654C /* README.md */,
 				3CB7EC9F25CDCB460062654C /* TestTask */,
 				3CB7EC9E25CDCB460062654C /* Products */,
 			);
