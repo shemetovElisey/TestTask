@@ -20,14 +20,17 @@ class FibonacciViewModel: ViewModelProtocol {
     }
     
     public func generateRows() {
-        let lastRow = rowArray.last ?? (BigInt(value: "0"), BigInt(value: "1"), isFirstGray)
-        let first = BigInt.sum(left: lastRow.0.value, right: lastRow.1.value)
-        let second = BigInt.sum(left: lastRow.1.value, right: first)
-        
-        DispatchQueue.main.async {
-            self.rowArray.append((BigInt(value: first),
-                                  BigInt(value: second), self.isFirstGray))
-            self.isFirstGray.toggle()
+        for _ in 1...16 {
+            DispatchQueue.main.async {
+                let lastRow = self.rowArray.last ?? (BigInt(value: "0"), BigInt(value: "1"), self.isFirstGray)
+                let first = BigInt.sum(left: lastRow.0.value, right: lastRow.1.value)
+                let second = BigInt.sum(left: lastRow.1.value, right: first)
+            
+            
+                self.rowArray.append((BigInt(value: first),
+                                      BigInt(value: second), self.isFirstGray))
+                self.isFirstGray.toggle()
+            }
         }
     }
     
