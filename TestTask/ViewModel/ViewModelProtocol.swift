@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ViewModelProtocol: ObservableObject {
-    var rowArray: [TableRow] { get }
+    var rowArray: [(BigInt, BigInt, Bool)] { get }
+    var queue: DispatchQueue { get }
     var isFirstGray: Bool { get }
     func generateRows()
 }

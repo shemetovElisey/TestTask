@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct BigInt: Hashable {
+struct BigInt: Hashable, Identifiable {
+    var id = UUID()
     var value: String
     
     static func sum(left: String, right: String) -> String {

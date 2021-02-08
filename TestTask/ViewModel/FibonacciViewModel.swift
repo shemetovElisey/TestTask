@@ -9,24 +9,25 @@ import Foundation
 
 
 class FibonacciViewModel: ViewModelProtocol {
-    @Published public private(set) var rowArray: [TableRow] = [TableRow(firstNum: BigInt(value: "0"),
-                                                                        secondNum: BigInt(value: "1"),
-                                                                        grayColorForNum: .first)]
+    @Published public private(set) var rowArray: [(BigInt, BigInt, Bool)] = [(BigInt(value: "0"),
+                                                                              BigInt(value: "1"), true)]
+    var queue = DispatchQueue(label: "fib-queue", qos: .userInitiated)
     var isFirstGray = false
+    var res = [(BigInt, BigInt, Bool)]()
     
     init() {
         generateRows()
     }
     
     public func generateRows() {
-        (1...8).forEach { _ in
-            let lastRow = rowArray.last ?? TableRow(firstNum: BigInt(value: "0"), secondNum: BigInt(value: "1"), grayColorForNum: .first)
-            let first = BigInt.sum(left: lastRow.firstNum.value , right: lastRow.secondNum.value)
-            let second = BigInt.sum(left: lastRow.secondNum.value, right: first)
-            
-            rowArray.append(TableRow(firstNum: BigInt(value: first), secondNum: BigInt(value: second),
-                                     grayColorForNum: isFirstGray ? .first : .second))
-            isFirstGray.toggle()
+        let lastRow = rowArray.last ?? (BigInt(value: "0"), BigInt(value: "1"), isFirstGray)
+        let first = BigInt.sum(left: lastRow.0.value, right: lastRow.1.value)
+        let second = BigInt.sum(left: lastRow.1.value, right: first)
+        
+        DispatchQueue.main.async {
+            self.rowArray.append((BigInt(value: first),
+                                  BigInt(value: second), self.isFirstGray))
+            self.isFirstGray.toggle()
         }
     }
     
